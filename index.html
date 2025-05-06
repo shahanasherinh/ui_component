@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <title>ui_component</title>
 </head>
 
-<body>
-
+<body class="h-screen bg-gradient-to-r from-white to-blue-100 ">
+    <div class=" relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto mt-20">
+        <h2 class="text-xl font-semibold mb-6 bg-black-200">Which language runs in a web browser?</h2>
+        <form class="text-left space-y-4 mb-6">
+            <input type="radio" name="language" class="font-bold"> <span> java </span> <br>
+            <input type="radio" name="language"> <span> c </span> <br>
+            <input type="radio" name="language"> <span> python </span> <br>
+            <input type="radio" name="language"> <span> javascript </span>
+            <button class="bg-purple-500 hover:bg-purple-700 
+            text-white font-bold py-2 px-4 rounded mt-6  w-full absolute bottom-0 left-0 ">Submit</button>
+    </div>
 </body>
 
 </html>
