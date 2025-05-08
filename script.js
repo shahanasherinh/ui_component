@@ -1,6 +1,6 @@
 const QUIZ_DATA = [
     {
-        question: "wWich Language Runs In a Web Browser?",
+        question: "Which Language Runs In a Web Browser?",
         options: ["java", "c", "python", "javascript"],
         answer: "javascript"
     },
@@ -20,19 +20,42 @@ const QUIZ_DATA = [
     },
     {
         question: "What Year Was Javascript Launched?",
-        Options: ["1996", "1995", "1994", "none of the above"],
+        options: ["1996", "1995", "1994", "none of the above"],
         answer: "1995"
     }
 ]
-QUIZ_DATA.forEach((item, index) => {
-    console.log(`Q${index + 1}: ${item.question}`);
-    const options = item.options;
-    if (options) {
-        options.forEach((option, i) => {
-            // console.log(`${String.fromCharCode(65 + i)}. ${option}`);
-            const letters = ['A', 'B', 'C', 'D'];  // Array of letters
-            console.log(`   ${letters[i]}. ${option}`);
-        });
-    }
-    console.log(`Answer: ${item.answer}`);
+
+document.body.className = "h-screen bg-gradient-to-r from-white to-blue-100 ";
+const container = document.getElementById("quiz-container");
+
+QUIZ_DATA.forEach((Item, index) => {
+    const box = document.createElement("div");
+    box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
+
+    const question = document.createElement("h2");
+    question.className = "text-xl mb-6";
+    question.textContent = Item.question;
+    box.appendChild(question);
+
+    const form = document.createElement("form");
+    form.className = "text-left space-y-4 mb-6";
+
+    Item.options.forEach((optionText) => {
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "language";
+        const span = document.createElement("span");
+        span.textContent = ` ${optionText}`;
+        form.appendChild(input);
+        form.appendChild(span);
+        form.appendChild(document.createElement("br"));
+    });
+    box.appendChild(form);
+
+    const button = document.createElement("button");
+    button.textContent = "Submit";
+    button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
+
+    box.appendChild(button);
+    container.appendChild(box);
 });
