@@ -29,7 +29,9 @@ QUIZ_DATA.forEach((item, index) => {
     const options = item.options;
     if (options) {
         options.forEach((option, i) => {
-            console.log(`   ${String.fromCharCode(65 + i)}. ${option}`);
+            // console.log(`${String.fromCharCode(65 + i)}. ${option}`);
+            const letters = ['A', 'B', 'C', 'D'];  // Array of letters
+            console.log(`   ${letters[i]}. ${option}`);
         });
     }
     console.log(`Answer: ${item.answer}`);
