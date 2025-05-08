@@ -24,3 +24,13 @@ const QUIZ_DATA = [
         answer: "1995"
     }
 ]
+QUIZ_DATA.forEach((item, index) => {
+    console.log(`Q${index + 1}: ${item.question}`);
+    const options = item.options;
+    if (options) {
+        options.forEach((option, i) => {
+            console.log(`   ${String.fromCharCode(65 + i)}. ${option}`);
+        });
+    }
+    console.log(`Answer: ${item.answer}`);
+});
