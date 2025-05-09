@@ -28,7 +28,7 @@ const QUIZ_DATA = [
 document.body.className = "h-screen bg-gradient-to-r from-white to-blue-100 ";
 const container = document.getElementById("quiz-container");
 
-QUIZ_DATA.forEach((Item, index) => {
+QUIZ_DATA.forEach((Item) => {
     const box = document.createElement("div");
     box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
 
