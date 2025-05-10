@@ -24,38 +24,56 @@ const QUIZ_DATA = [
         answer: "1995"
     }
 ]
+function displayquestion() {
 
+}
 document.body.className = "h-screen bg-gradient-to-r from-white to-blue-100 ";
 const container = document.getElementById("quiz-container");
 
-QUIZ_DATA.forEach((Item) => {
-    const box = document.createElement("div");
-    box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
+function displayquestion() {
+    if (currentbox) currentbox.remove();
+    QUIZ_DATA.forEach((item) => {
+        const box = document.createElement("div");
+        box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
 
-    const question = document.createElement("h2");
-    question.className = "text-xl mb-6";
-    question.textContent = Item.question;
-    box.appendChild(question);
+        const question = document.createElement("h2");
+        question.className = "text-xl mb-6";
+        question.textContent = item.question;
+        box.appendChild(question);
 
-    const form = document.createElement("form");
-    form.className = "text-left space-y-4 mb-6";
+        const form = document.createElement("form");
+        form.className = "text-left space-y-4 mb-6";
 
-    Item.options.forEach((optionText) => {
-        const input = document.createElement("input");
-        input.type = "radio";
-        input.name = "language";
-        const span = document.createElement("span");
-        span.textContent = ` ${optionText}`;
-        form.appendChild(input);
-        form.appendChild(span);
-        form.appendChild(document.createElement("br"));
+        item.options.forEach((optionText) => {
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "language";
+            const span = document.createElement("span");
+            span.textContent = ` ${optionText} `;
+            form.appendChild(input);
+            form.appendChild(span);
+            form.appendChild(document.createElement("br"));
+        });
+        box.appendChild(form);
     });
-    box.appendChild(form);
 
-    const button = document.createElement("button");
-    button.textContent = "Submit";
-    button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
+}
 
-    box.appendChild(button);
-    container.appendChild(box);
-});
+const button = document.createElement("button");
+button.textContent = "Submit";
+button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
+box.appendChild(button);
+container.appendChild(box);
+
+let quizindex = 0
+button.onclick = function () {
+    const current = QUIZ_DATA[quizindex]
+    quizindex++;
+    if (currentIndex < QUIZ_DATA.length) {
+        displayquestion(currentIndex);
+    }
+
+};
+
+
+
