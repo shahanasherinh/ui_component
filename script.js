@@ -37,6 +37,7 @@ function displayquestion(index) {
     if (currentbox) currentbox.remove();
 
     const box = document.createElement("div");
+
     box.id = "quix-box"
     box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
 
@@ -49,25 +50,28 @@ function displayquestion(index) {
     form.className = "text-left space-y-4 mb-6";
 
 
-    QUIZ_DATA.forEach((item) => {
-        current.options.forEach((optionText) => {
-            const input = document.createElement("input");
-            input.type = "radio";
-            input.name = "language";
-            const span = document.createElement("span");
-            span.textContent = ` ${optionText} `;
-            form.appendChild(input);
-            form.appendChild(span);
-            form.appendChild(document.createElement("br"));
-        });
-        box.appendChild(form);
+    current.options.forEach((optionText) => {
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "language";
+        const span = document.createElement("span");
+        span.textContent = ` ${optionText} `;
+        form.appendChild(input);
+        form.appendChild(span);
+        form.appendChild(document.createElement("br"));
     });
+    box.appendChild(form);
+
 
     const button = document.createElement("button");
     button.textContent = "Submit";
     button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
     // box.appendChild(button);
     // container.appendChild(box);
+    button.addEventListener("click", function () {
+        box.style.display = "none";
+        document.getElementById("form").style.display = "block";
+    })
     button.onclick = function () {
 
         quizindex++;
