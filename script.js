@@ -24,27 +24,33 @@ const QUIZ_DATA = [
         answer: "1995"
     }
 ]
-function displayquestion() {
+let quizindex = 0
 
-}
 document.body.className = "h-screen bg-gradient-to-r from-white to-blue-100 ";
 const container = document.getElementById("quiz-container");
 
-function displayquestion() {
+function displayquestion(index) {
+
+    const current = QUIZ_DATA[index];
+
+    const currentbox = document.getElementById("quiz-box");
     if (currentbox) currentbox.remove();
+
+    const box = document.createElement("div");
+    box.id = "quix-box"
+    box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
+
+    const question = document.createElement("h2");
+    question.className = "text-xl mb-6";
+    question.textContent = current.question;
+    box.appendChild(question);
+
+    const form = document.createElement("form");
+    form.className = "text-left space-y-4 mb-6";
+
+
     QUIZ_DATA.forEach((item) => {
-        const box = document.createElement("div");
-        box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
-
-        const question = document.createElement("h2");
-        question.className = "text-xl mb-6";
-        question.textContent = item.question;
-        box.appendChild(question);
-
-        const form = document.createElement("form");
-        form.className = "text-left space-y-4 mb-6";
-
-        item.options.forEach((optionText) => {
+        current.options.forEach((optionText) => {
             const input = document.createElement("input");
             input.type = "radio";
             input.name = "language";
@@ -57,23 +63,26 @@ function displayquestion() {
         box.appendChild(form);
     });
 
+    const button = document.createElement("button");
+    button.textContent = "Submit";
+    button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
+    // box.appendChild(button);
+    // container.appendChild(box);
+    button.onclick = function () {
+
+        quizindex++;
+        if (quizindex < QUIZ_DATA.length) {
+            displayquestion(quizindex);
+        }
+    };
+
+    box.appendChild(button);
+    container.appendChild(box);
+
 }
+displayquestion(quizindex);
 
-const button = document.createElement("button");
-button.textContent = "Submit";
-button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
-box.appendChild(button);
-container.appendChild(box);
 
-let quizindex = 0
-button.onclick = function () {
-    const current = QUIZ_DATA[quizindex]
-    quizindex++;
-    if (currentIndex < QUIZ_DATA.length) {
-        displayquestion(currentIndex);
-    }
-
-};
 
 
 
