@@ -32,11 +32,9 @@ const container = document.getElementById("quiz-container");
 function displayquestion(index) {
 
     const current = QUIZ_DATA[index];
-
-    const currentbox = document.getElementById("quiz-box");
+    // const currentbox = document.getElementById("quiz-box");
 
     const box = document.createElement("div");
-
     box.id = "quix-box"
     box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
 
@@ -65,8 +63,7 @@ function displayquestion(index) {
     const button = document.createElement("button");
     button.textContent = "Submit";
     button.className = "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-6 w-full absolute bottom-0 left-0";
-    // box.appendChild(button);
-    // container.appendChild(box);
+
     button.addEventListener("click", function () {
         box.style.display = "none";
         document.getElementById("form").style.display = "block";
