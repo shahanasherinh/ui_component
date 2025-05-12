@@ -34,7 +34,6 @@ function displayquestion(index) {
     const current = QUIZ_DATA[index];
 
     const currentbox = document.getElementById("quiz-box");
-    if (currentbox) currentbox.remove();
 
     const box = document.createElement("div");
 
