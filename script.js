@@ -32,8 +32,6 @@ const container = document.getElementById("quiz-container");
 function displayquestion(index) {
 
     const current = QUIZ_DATA[index];
-    // const currentbox = document.getElementById("quiz-box");
-
     const box = document.createElement("div");
     box.id = "quix-box"
     box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
