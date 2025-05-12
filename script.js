@@ -71,6 +71,7 @@ function displayquestion(index) {
         const SELECTED_ANSWER = box.querySelector('input[name="language"]:checked');
         const USER_ANSWER = SELECTED_ANSWER.value
         const CORRECT_ANSWER = QUIZ_DATA[quizindex].answer
+        if (!SELECTED_ANSWER) return;
         if (USER_ANSWER === CORRECT_ANSWER) {
             score++;
         }
@@ -81,14 +82,13 @@ function displayquestion(index) {
             showfinalscore();
         }
     };
-
-
-
     box.appendChild(button);
     container.appendChild(box);
 
-
 }
 displayquestion(quizindex);
+
+
+
 
 
