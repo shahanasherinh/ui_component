@@ -24,8 +24,8 @@ const QUIZ_DATA = [
         answer: "1995"
     }
 ]
-let quizindex = 0
-
+let quizindex = 0;
+let score = 0;
 document.body.className = "h-screen bg-gradient-to-r from-white to-blue-100 ";
 const container = document.getElementById("quiz-container");
 
@@ -49,6 +49,7 @@ function displayquestion(index) {
         const input = document.createElement("input");
         input.type = "radio";
         input.name = "language";
+        input.value = optionText;
         const span = document.createElement("span");
         span.textContent = ` ${optionText} `;
         form.appendChild(input);
@@ -67,20 +68,27 @@ function displayquestion(index) {
         document.getElementById("form").style.display = "block";
     })
     button.onclick = function () {
-
+        const SELECTED_ANSWER = box.querySelector('input[name="language"]:checked');
+        const USER_ANSWER = SELECTED_ANSWER.value
+        const CORRECT_ANSWER = QUIZ_DATA[quizindex].answer
+        if (USER_ANSWER === CORRECT_ANSWER) {
+            score++;
+        }
         quizindex++;
         if (quizindex < QUIZ_DATA.length) {
             displayquestion(quizindex);
+        } else {
+            showfinalscore();
         }
     };
+
+
 
     box.appendChild(button);
     container.appendChild(box);
 
+
 }
 displayquestion(quizindex);
-
-
-
 
 
