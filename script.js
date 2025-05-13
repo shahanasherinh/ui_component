@@ -26,6 +26,7 @@ const QUIZ_DATA = [
 ]
 let quizindex = 0;
 let score = 0;
+
 document.body.className = "h-screen bg-gradient-to-r from-white to-blue-100 ";
 const container = document.getElementById("quiz-container");
 
