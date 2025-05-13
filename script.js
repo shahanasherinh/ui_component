@@ -33,7 +33,7 @@ function displayquestion(index) {
 
     const current = QUIZ_DATA[index];
     const box = document.createElement("div");
-    box.id = "quix-box"
+    // box.id = "quix-box"
     box.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
 
     const question = document.createElement("h2");
@@ -82,6 +82,12 @@ function displayquestion(index) {
             showfinalscore();
         }
     };
+    function showfinalscore() {
+        const result = document.createElement("div");
+        result.className = "relative bg-white rounded-xl shadow-md p-8 w-96 text-center mx-auto";
+        result.textContent = `Your final score is: ${score} / ${QUIZ_DATA.length}`;
+        container.appendChild(result)
+    }
     box.appendChild(button);
     container.appendChild(box);
 
